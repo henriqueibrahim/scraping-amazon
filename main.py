@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 from selectorlib import Extractor
 from time import sleep
 
-# Loading and setting SQL variables.
 # Carregando as variáveis do SQL.
 load_dotenv()
 
@@ -15,7 +14,6 @@ sqlPassword = os.getenv("PASSWORD")
 sqlDatabase = os.getenv("DATABASE")
 
 
-# Create an Extractor by reading from the YAML file.
 # Cria um Extractor lendo do arquivo YAML.
 e = Extractor.from_yaml_file('search.yml')
 
@@ -38,7 +36,6 @@ def scrape(url):
     print(f"Downloading {url}")
     r = requests.get(url, headers=headers)
 
-    # A simple check to see if the page was blocked.
     # Verificação simples para ver se a página foi bloqueada.
     if r.status_code > 500:
         if "To discuss automated access to Amazon data please contact" in r.text:
@@ -46,11 +43,9 @@ def scrape(url):
         else:
             print(f"Page {url} must have been blocked by Amazon.The status code is: {r.status_code}")
         return None
-    # Pass the HTML of the page and create 
     return e.extract(r.text)
 
 
-# Connect no MySQL.
 # Conectar no MySQL.
 cnx = mysql.connector.connect(user=sqlUser, password=sqlPassword, database=sqlDatabase)
 cursor = cnx.cursor()
