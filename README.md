@@ -65,6 +65,7 @@ DATABASE=nomeDaDatabase
 ```
 
 Depois disso, só entrar no arquivo "search_urls.txt" e colocar as URLs de pesquisa que deseja raspar (lembrando que somente da amazon) e rodar o main.py
+
 segue o padrão que já vai no arquivo
 
 
